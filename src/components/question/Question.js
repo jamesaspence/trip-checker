@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import Button from './Button';
+
 import './Question.scss';
 
 class Question extends Component {
@@ -9,8 +11,8 @@ class Question extends Component {
                     Test Question
                 </h1>
                 <div className="buttons-container">
-                    <a href="#" className="button yes">Yep!</a>
-                    <a href="#" className="button no">S#$%</a>
+                    <Button buttonClass="yes" text="Yep!" />
+                    <Button buttonClass="no" text="S#&@" />
                 </div>
             </div>
         );
