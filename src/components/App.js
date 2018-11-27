@@ -13,7 +13,7 @@ const mapStateToProps = state => ({
 const ConnectedApp = ({ questions, currentIndex }) => {
   return (
     <div className="app">
-      <QuestionContainer/>
+      {questions.length > currentIndex ? (<QuestionContainer/>) : ''}
       <AnsweredQuestionContainer/>
     </div>
   );
