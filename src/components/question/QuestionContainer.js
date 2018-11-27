@@ -41,7 +41,7 @@ class QuestionContainer extends Component {
   getCurrentQuestion() {
     const { questions, currentIndex } = this.props;
 
-    if (currentIndex + 1 >= questions.length) {
+    if (currentIndex >= questions.length) {
       return null;
     }
 
