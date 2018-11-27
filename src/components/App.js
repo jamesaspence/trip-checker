@@ -1,13 +1,21 @@
-import React, { Component } from 'react';
+import React from 'react';
 import QuestionContainer from './question/QuestionContainer';
+import { connect } from 'react-redux';
+
 import './App.scss';
 
-class App extends Component {
-  render() {
-    return (
-      <QuestionContainer/>
-    );
-  }
-}
+const mapStateToProps = state => ({
+  questions: state.questions,
+  currentIndex: state.currentIndex
+});
 
-export default App;
+const ConnectedApp = ({ questions, currentIndex }) => {
+  return (
+    <div className="app">
+      <QuestionContainer/>
+      <QuestionContainer/>
+    </div>
+  );
+};
+
+export default connect(mapStateToProps)(ConnectedApp);
