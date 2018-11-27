@@ -1,6 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import ListItem from './AnsweredQuestion';
+import AnsweredQuestion from './AnsweredQuestion';
+import './AnsweredQuestionContainer.scss';
 
 const mapStateToProps = state => ({
   answeredQuestions: state.answeredQuestions
@@ -9,7 +10,7 @@ const mapStateToProps = state => ({
 const AnsweredQuestionContainer = ({ answeredQuestions }) => {
   return (
     <div className="answered-question-container half-height-container">
-      {answeredQuestions.map((question, i) => (<ListItem key={i} question={question}/>))}
+      {answeredQuestions.map((question, i) => (<AnsweredQuestion key={i} question={question}/>))}
     </div>
   );
 };

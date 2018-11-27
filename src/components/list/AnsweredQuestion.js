@@ -1,4 +1,5 @@
 import React from 'react';
+import './AnsweredQuestion.scss';
 
 const AnsweredQuestion = ({ question }) => (
   <div className="answered-question">
