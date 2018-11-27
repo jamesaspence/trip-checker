@@ -13,13 +13,16 @@ export default (state = initialState, action) => {
   switch (type) {
     case ANSWER_QUESTION:
       const { answeredQuestions } = state;
-      answeredQuestions.push(rest);
-      return Object.assign({}, state, { answeredQuestions });
+      return {
+        ...state,
+        answeredQuestions: [...answeredQuestions, rest]
+      };
     case INCREMENT:
       const { currentIndex } = state;
-      return Object.assign({}, state, {
+      return {
+        ...state,
         currentIndex: currentIndex + 1
-      });
+      };
     default:
       return state;
   }
