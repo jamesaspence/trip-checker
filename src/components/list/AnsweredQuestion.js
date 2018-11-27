@@ -1,10 +1,10 @@
 import React from 'react';
 
-const ConnectedListItem = ({ question }) => (
+const AnsweredQuestion = ({ question }) => (
   <div className="answered-question">
-    <h2>{question.question}</h2>
+    <h2>{question.text}</h2>
     <p>{question.packed ? 'PACKED' : 'NOT PACKED'}</p>
   </div>
 );
 
-export default ConnectedListItem;
+export default AnsweredQuestion;
