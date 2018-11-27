@@ -17,3 +17,9 @@ code {
 #root {
   height: 100vh;
 }
+
+.half-height-container {
+  display: flex;
+  height: 50%;
+  align-items: center;
+}

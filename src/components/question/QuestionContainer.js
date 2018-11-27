@@ -5,8 +5,6 @@ import { connect } from 'react-redux';
 import { answerPackedQuestion, incrementQuestion } from '../../actions';
 import React from 'react';
 
-import './QuestionContainer.scss';
-
 const mapStateToProps = state => ({
   questions: state.questions,
   currentIndex: state.currentIndex
@@ -52,7 +50,7 @@ class QuestionContainer extends Component {
 
   render() {
     return (
-      <div className="question-container">
+      <div className="question-container half-height-container">
         <Question question={this.getCurrentQuestion()} onYes={this.onYes} onNo={this.onNo}/>
       </div>
     );
