@@ -1,22 +1,18 @@
-import React, {Component} from 'react';
+import React from 'react';
 import Button from './Button';
 
 import './Question.scss';
 
-class Question extends Component {
-  render() {
-    return (
-      <div className="question-container">
-        <h1 className="question">
-          {this.props.question}
-        </h1>
-        <div className="buttons-container">
-          <Button buttonClass="yes" text="Yep!" onClick={this.props.onAnswer}/>
-          <Button buttonClass="no" text="S#&@" onClick={this.props.onAnswer}/>
-        </div>
-      </div>
-    );
-  }
-}
+const Question = ({ question, onYes, onNo }) => (
+  <div className="question">
+    <h1 className="question-text">
+      {question}
+    </h1>
+    <div className="buttons-container">
+      <Button buttonClass="yes" text="Yep!" onClick={onYes}/>
+      <Button buttonClass="no" text="S#&@" onClick={onNo}/>
+    </div>
+  </div>
+);
 
 export default Question;

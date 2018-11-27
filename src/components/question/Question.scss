@@ -1,13 +1,8 @@
-.question-container {
-  display: flex;
-  flex-direction: column;
-  padding: 30vh 0;
-  height: 40vh;
-  width: 50%;
-  margin: 0 auto;
+.question {
+  flex: 1;
 }
 
-.question {
+.question-text {
   text-align: center;
   margin: 0;
   flex: 1;
