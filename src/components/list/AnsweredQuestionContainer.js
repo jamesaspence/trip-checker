@@ -10,7 +10,7 @@ const mapStateToProps = state => ({
 const AnsweredQuestionContainer = ({ answeredQuestions }) => {
   return (
     <div className="answered-question-container half-height-container">
-      {answeredQuestions.map((question, i) => (<AnsweredQuestion key={i} question={question}/>))}
+      {answeredQuestions.map((question, i) => (<AnsweredQuestion key={i} question={question} index={i}/>))}
     </div>
   );
 };

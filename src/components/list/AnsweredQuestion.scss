@@ -1,4 +1,15 @@
 .answered-question {
   width: 100%;
-  text-align: center;
+  display: flex;
+  flex-direction: row;
+}
+
+.text-container {
+  flex: 11;
+  align-self: center;
+  margin: 15px 0;
+
+  .text {
+    margin: 0;
+  }
 }
