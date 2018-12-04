@@ -15,8 +15,14 @@
     outline: rgb(59, 153, 252) auto 5px;
   }
 
-  &:checked + .packed-toggle-label:after {
-    content: "";
+  &:checked {
+    & + .packed-toggle-label::before {
+      background-color: #439153;
+      border-color: #439153;
+    }
+    & + .packed-toggle-label::after {
+      content: "";
+    }
   }
 }
 
@@ -34,8 +40,8 @@
     display: inline-block;
     height: 16px;
     width: 16px;
-    border: 1px solid #439153;
-    background-color: #439153;
+    border: 1px solid red;
+    background-color: red;
     top: 3px;
     border-radius: 3px;
   }
