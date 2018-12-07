@@ -1,4 +1,4 @@
-import { ANSWER_QUESTION, INCREMENT } from '../actions';
+import { ANSWER_QUESTION, INCREMENT, TOGGLE_CHECKBOX } from '../actions';
 
 import questions from '../questions.json';
 
@@ -23,6 +23,20 @@ export default (state = initialState, action) => {
         ...state,
         currentIndex: currentIndex + 1
       };
+    case TOGGLE_CHECKBOX:
+      let modifiedQuestions = state.answeredQuestions
+        .map(question => {
+          if (question.text === rest.question) {
+            question.packed = rest.packed;
+          }
+
+          return question;
+        });
+      return {
+        ...state,
+        answeredQuestions: modifiedQuestions
+      };
+
     default:
       return state;
   }
