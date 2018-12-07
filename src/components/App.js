@@ -7,14 +7,15 @@ import './App.scss';
 
 const mapStateToProps = state => ({
   questions: state.questions,
-  currentIndex: state.currentIndex
+  currentIndex: state.currentIndex,
+  answeredQuestions: state.answeredQuestions
 });
 
-const ConnectedApp = ({ questions, currentIndex }) => {
+const ConnectedApp = ({ questions, answeredQuestions, currentIndex }) => {
   return (
     <div className="app">
       {questions.length > currentIndex ? (<QuestionContainer/>) : ''}
-      <AnsweredQuestionContainer/>
+      {answeredQuestions.length > 0 ? (<AnsweredQuestionContainer/>) : ''}
     </div>
   );
 };
