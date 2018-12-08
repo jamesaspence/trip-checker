@@ -27,7 +27,7 @@ class AnsweredQuestion extends Component {
     return (
       <div className="answered-question">
         <Checkbox checked={question.packed} onChange={this.toggleCheckbox} index={index} />
-        <div className="text-container">
+        <div className="text-container" onClick={this.toggleCheckbox}>
           <p className="text">{question.text}</p>
         </div>
       </div>

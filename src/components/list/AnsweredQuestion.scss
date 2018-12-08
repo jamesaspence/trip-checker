@@ -4,11 +4,13 @@
 }
 
 .text-container {
+  cursor: pointer;
   flex: 11;
   align-self: center;
   margin: 15px 0;
 
   .text {
     margin: 0;
+    user-select: none;
   }
 }
