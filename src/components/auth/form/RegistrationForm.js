@@ -1,22 +1,28 @@
-import React from 'react';
-import { SWITCH_REGISTRATION } from '../Switcher';
+import React, { Component } from 'react';
 import AuthForm from './AuthForm';
 import FormInput from './FormInput';
 
+class RegistrationForm extends Component {
+  onSubmit(formValues) {
 
-/*<AuthForm
-  header="Registration"
-  active={switchForm === SWITCH_REGISTRATION}>
-    <FormInput type="text" name="first_name" placeholder="First Name" />
-    <FormInput type="text" name="last_name" placeholder="Last Name" />
-    <FormInput type="text" name="email" placeholder="Email" />
-    <FormInput type="text" name="confirm_email" placeholder="Email Confirmation" />
-    <FormInput type="password" name="password" placeholder="Password" />
-    <FormInput type="password" name="confirm_password" placeholder="Password Confirmation" />
-</AuthForm>*/
+  }
 
-const RegistrationForm = ({ switchForm }) => (
-  <div className="auth-form">Hello</div>
-);
+  render() {
+    const { active } = this.props;
+
+    return (
+      <AuthForm
+        header="Registration"
+        active={active}>
+        <FormInput type="text" name="first_name" placeholder="First Name" autoComplete="given-name" required />
+        <FormInput type="text" name="last_name" placeholder="Last Name" autoComplete="family-name" required />
+        <FormInput type="text" name="email" placeholder="Email" autoComplete="email" required />
+        <FormInput type="text" name="confirm_email" placeholder="Email Confirmation" autoComplete="email" required />
+        <FormInput type="password" name="password" placeholder="Password" autoComplete="new-password" required />
+        <FormInput type="password" name="confirm_password" placeholder="Password Confirmation" autoComplete="new-password" required />
+      </AuthForm>
+    );
+  }
+}
 
 export default RegistrationForm;

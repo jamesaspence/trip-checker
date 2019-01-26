@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import Switcher, { SWITCH_LOGIN } from './Switcher';
+import Switcher, { SWITCH_LOGIN, SWITCH_REGISTRATION } from './Switcher';
 import LoginForm from './form/LoginForm';
 import RegistrationForm from './form/RegistrationForm';
 
@@ -31,8 +31,8 @@ class AuthContainer extends Component {
     return (
       <div className="auth-container full-container">
         <Switcher onSwitch={this.onSwitch}/>
-        <LoginForm switchForm={this.state.form}/>
-        <RegistrationForm switchForm={this.state.form}/>
+        <LoginForm active={this.state.form === SWITCH_LOGIN}/>
+        <RegistrationForm active={this.state.form === SWITCH_REGISTRATION}/>
       </div>
     );
   }
