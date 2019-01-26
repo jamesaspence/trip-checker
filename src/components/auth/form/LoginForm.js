@@ -3,10 +3,6 @@ import AuthForm from './AuthForm';
 import FormInput from './FormInput';
 
 class LoginForm extends Component {
-  static defaultProps = {
-    active: true
-  };
-
   constructor(props) {
     super(props);
 
