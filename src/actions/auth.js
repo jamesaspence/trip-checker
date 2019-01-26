@@ -1,10 +1,13 @@
+import axios from 'axios';
+
 export const LOGIN_SUCCESS = 'LOGIN_SUCCESS';
 export const LOGIN_FAILURE = 'LOGIN_FAILURE';
 
-export function loginSuccess(user) {
+export function loginSuccess(user, token) {
   return {
     type: LOGIN_SUCCESS,
-    user
+    user,
+    token
   };
 }
 
@@ -17,14 +20,13 @@ export function loginFailure(response) {
 
 export function attemptLogin(email, password) {
   return dispatch => {
-    console.log(`Attempting login with ${email}:${password}`);
-    setTimeout(() => {
-      console.log(`timeout succeeded!`);
-      dispatch(loginSuccess({
-        email: email,
-        first_name: 'James',
-        last_name: 'Spence'
-      }));
-    }, 3000);
+    axios.post(`${process.env.REACT_APP_API_URL}/login`, {
+      email,
+      password
+    }).then(res => {
+      const { user, token } = res.data.data;
+      dispatch(loginSuccess(user, token))
+    })
+      .catch(error => dispatch(loginFailure(error.response)));
   }
 }
