@@ -1,4 +1,5 @@
 import { ANSWER_QUESTION, INCREMENT, TOGGLE_CHECKBOX } from '../actions';
+import { LOGIN_SUCCESS } from '../actions/auth';
 
 import questions from '../questions.json';
 
@@ -35,6 +36,13 @@ export default (state = initialState, action) => {
       return {
         ...state,
         answeredQuestions: modifiedQuestions
+      };
+    case LOGIN_SUCCESS:
+      const { user, token } = rest;
+      return {
+        token,
+        user,
+        ...state
       };
 
     default:
