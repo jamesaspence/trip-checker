@@ -2,27 +2,44 @@ import React, { Component } from 'react';
 
 import './AuthForm.scss';
 
-const withOnChange = (input, key, onChange) => {
-  return React.cloneElement(input, {
-    key,
-    onChange
-  });
-};
-
 class AuthForm extends Component {
+  static defaultProps = {
+    requiredFields: []
+  };
+
   constructor(props) {
     super(props);
 
     this.onSubmit = this.onSubmit.bind(this);
     this.onChange = this.onChange.bind(this);
+    this.wrapInput = this.wrapInput.bind(this);
 
     this.state = {
-      formValues: {}
+      formValues: {},
+      errors: []
     };
   }
 
   onSubmit(event) {
     event.preventDefault();
+
+    const { formValues } = this.state;
+    const { requiredFields } = this.props;
+    const errors = [];
+
+    requiredFields.forEach(key => {
+      if (!formValues.hasOwnProperty(key) || typeof formValues[key] !== 'string' || formValues[key].trim() === '') {
+        errors.push(key);
+      }
+    });
+
+    if (errors.length > 0) {
+      this.setState({
+        errors
+      });
+      return;
+    }
+
     this.props.onSubmit(this.state.formValues);
   }
 
@@ -36,6 +53,16 @@ class AuthForm extends Component {
     });
   }
 
+  wrapInput(input, key) {
+    const { errors } = this.state;
+
+    return React.cloneElement(input, {
+      key,
+      onChange: this.onChange,
+      error: errors.includes(input.props.name)
+    });
+  }
+
   render() {
     const { active, header, children } = this.props;
 
@@ -43,7 +70,7 @@ class AuthForm extends Component {
       <form className={`auth-form ${active ? `active` : ``}`} onSubmit={this.onSubmit}>
         <h3 className="auth-form-header">{header}</h3>
         <div className="form-items">
-          {children.map((input, i) => withOnChange(input, i, this.onChange))}
+          {children.map(this.wrapInput)}
           <button className="submit-form">
             Submit
           </button>

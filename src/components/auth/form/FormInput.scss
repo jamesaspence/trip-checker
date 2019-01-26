@@ -1,7 +1,16 @@
-.form-input {
+.auth-form-error {
+  color: red;
+  display: block;
   margin-top: 10px;
-  border: none;
-  outline: none;
-  font-size: 16px;
-  padding: 5px;
+
+  .form-input {
+    color: #000;
+    border: none;
+    outline: none;
+    font-size: 16px;
+    padding: 5px;
+    margin: 0;
+    width: 100%;
+    box-sizing: border-box;
+  }
 }
