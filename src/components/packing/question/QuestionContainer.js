@@ -2,7 +2,7 @@ import { Component } from 'react';
 import Question from './Question';
 import { connect } from 'react-redux';
 
-import { answerPackedQuestion, incrementQuestion } from '../../actions';
+import { answerPackedQuestion, incrementQuestion } from '../../../actions';
 import React from 'react';
 
 const mapStateToProps = state => ({

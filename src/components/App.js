@@ -1,6 +1,6 @@
 import React from 'react';
 import { Component } from 'react';
-import PackContainer from './PackContainer';
+import PackContainer from './packing/PackContainer';
 
 class App extends Component {
   render () {
