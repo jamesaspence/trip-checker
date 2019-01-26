@@ -1,16 +1,41 @@
-import React from 'react';
+import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import Switcher, { SWITCH_LOGIN } from './Switcher';
+import LoginForm from './form/LoginForm';
+import RegistrationForm from './form/RegistrationForm';
 
-const mapStateToProps = () => {};
+import './AuthContainer.scss';
+
+const mapStateToProps = () => ({});
 
 // const mapDispatchToProps = () => {};
 
-const AuthContainer = () => {
-  return (
-    <div className="full-container">
-      <h1>HI!</h1>
-    </div>
-  );
-};
+class AuthContainer extends Component {
+  constructor(props) {
+    super(props);
+
+    this.onSwitch = this.onSwitch.bind(this);
+
+    this.state = {
+      form: SWITCH_LOGIN
+    }
+  }
+
+  onSwitch(switchState) {
+    this.setState({
+      form: switchState
+    });
+  }
+
+  render() {
+    return (
+      <div className="auth-container full-container">
+        <Switcher onSwitch={this.onSwitch}/>
+        <LoginForm switchForm={this.state.form}/>
+        <RegistrationForm switchForm={this.state.form}/>
+      </div>
+    );
+  }
+}
 
 export default connect(mapStateToProps)(AuthContainer);

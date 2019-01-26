@@ -1,0 +1,15 @@
+.switcher {
+  flex: 1;
+  display: flex;
+  background-color: #fff;
+
+  .switch-option {
+    flex: 1;
+    margin: 10px;
+
+    .option-text {
+      margin: 0;
+      color: #000;
+    }
+  }
+}

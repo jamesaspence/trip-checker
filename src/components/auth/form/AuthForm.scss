@@ -1,0 +1,8 @@
+.auth-form {
+  flex: 9;
+  display: none;
+
+  &.active {
+    display: block;
+  }
+}
