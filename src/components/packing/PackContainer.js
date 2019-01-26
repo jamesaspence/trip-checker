@@ -13,7 +13,7 @@ const mapStateToProps = state => ({
 
 const ConnectedPackContainer = ({ questions, answeredQuestions, currentIndex }) => {
   return (
-    <div className="pack-container">
+    <div className="pack-container full-container">
       {questions.length > currentIndex ? (<QuestionContainer/>) : ''}
       {answeredQuestions.length > 0 ? (<AnsweredQuestionContainer/>) : ''}
     </div>
