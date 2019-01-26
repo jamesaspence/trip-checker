@@ -28,11 +28,13 @@ class AuthContainer extends Component {
   }
 
   render() {
+    const { form } = this.state;
+
     return (
       <div className="auth-container full-container">
-        <Switcher onSwitch={this.onSwitch}/>
-        <LoginForm active={this.state.form === SWITCH_LOGIN}/>
-        <RegistrationForm active={this.state.form === SWITCH_REGISTRATION}/>
+        <Switcher onSwitch={this.onSwitch} currentSwitch={form}/>
+        <LoginForm active={form === SWITCH_LOGIN}/>
+        <RegistrationForm active={form === SWITCH_REGISTRATION}/>
       </div>
     );
   }

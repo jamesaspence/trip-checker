@@ -8,8 +8,11 @@
     flex: 1;
     padding: 10px;
     text-align: center;
-
     border-right: 2px solid gray;
+
+    &.active, &:hover {
+      background-color: #ccc;
+    }
 
     &:last-child {
       border-right: none;
