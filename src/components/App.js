@@ -7,7 +7,9 @@ import './App.scss';
 
 class App extends Component {
   render () {
-    return <PackContainer/>;
+    return <div className="app">
+      <PackContainer/>
+    </div>;
   }
 }
 
