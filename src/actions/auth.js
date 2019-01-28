@@ -3,7 +3,7 @@ import { setUser, clearUserAndToken } from '../util/localStorage';
 
 export const VALIDATE_FORM = 'VALIDATE_FORM';
 export const LOGIN_SUCCESS = 'LOGIN_SUCCESS';
-export const LOGIN_FAILURE = 'LOGIN_FAILURE';
+export const AUTH_FAILURE = 'AUTH_FAILURE';
 export const REGISTRATION_FAILURE = 'REGISTRATION_FAILURE';
 export const LOGOUT = 'logout';
 
@@ -27,9 +27,9 @@ export function loginSuccess(user, token) {
   };
 }
 
-export function loginFailure(response) {
+export function authFailure(response) {
   return {
-    type: LOGIN_FAILURE,
+    type: AUTH_FAILURE,
     response
   };
 }
@@ -61,7 +61,7 @@ export function attemptLogin(email, password) {
       .catch(error => {
         console.log(error);
         console.log(error.response);
-        dispatch(loginFailure(error.response));
+        dispatch(authFailure(error.response));
       });
   }
 }
