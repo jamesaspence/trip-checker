@@ -18,6 +18,7 @@ export default (state = initialState, action) => {
         user
       };
     case LOGOUT:
+      console.log(initialState);
       return {
         ...initialState,
         user: undefined,
@@ -25,7 +26,9 @@ export default (state = initialState, action) => {
       };
     case VALIDATE_FORM:
       const { name, errors } = rest;
-      const { validation } = state;
+      let validation = {
+        ...state.validation
+      };
 
       validation[name] = errors;
 
@@ -35,7 +38,9 @@ export default (state = initialState, action) => {
       };
 
     default:
-      return state;
+      return {
+        ...state
+      };
   }
 };
 
