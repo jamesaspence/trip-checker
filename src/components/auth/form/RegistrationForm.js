@@ -6,7 +6,7 @@ import { validateEmpty } from '../../../util/validate';
 import { attemptRegistration } from '../../../actions/auth';
 
 const mapDispatchToProps = dispatch => ({
-  attemptRegistration: (firstName, lastName, email, password, confirmPassword) => dispatch(attemptRegistration(firstName, lastName, email, password, confirmPassword))
+  attemptRegistration: (firstName, lastName, email, password, confirmPassword) => dispatch(attemptRegistration('registration', firstName, lastName, email, password, confirmPassword))
 });
 
 class RegistrationForm extends Component {

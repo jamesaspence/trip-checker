@@ -3,8 +3,6 @@ import { setUser, clearUserAndToken } from '../util/localStorage';
 
 export const VALIDATE_FORM = 'VALIDATE_FORM';
 export const LOGIN_SUCCESS = 'LOGIN_SUCCESS';
-export const AUTH_FAILURE = 'AUTH_FAILURE';
-export const REGISTRATION_FAILURE = 'REGISTRATION_FAILURE';
 export const LOGOUT = 'logout';
 
 const getUrl = relativeUrl => `${process.env.REACT_APP_API_URL}${relativeUrl}`;
@@ -27,18 +25,8 @@ export function loginSuccess(user, token) {
   };
 }
 
-export function authFailure(response) {
-  return {
-    type: AUTH_FAILURE,
-    response
-  };
-}
-
-export function registrationFailure(response) {
-  return {
-    type: REGISTRATION_FAILURE,
-    response
-  };
+export function authFailure(formName, response) {
+  return validateForm(formName, response.data.errors);
 }
 
 export function validateForm(name, errors) {
@@ -49,7 +37,7 @@ export function validateForm(name, errors) {
   }
 }
 
-export function attemptLogin(email, password) {
+export function attemptLogin(formName, email, password) {
   return dispatch => {
     axios.post(getUrl('/login'), {
       email,
@@ -59,14 +47,12 @@ export function attemptLogin(email, password) {
       dispatch(loginSuccess(user, token));
     })
       .catch(error => {
-        console.log(error);
-        console.log(error.response);
-        dispatch(authFailure(error.response));
+        dispatch(authFailure(formName, error.response));
       });
   }
 }
 
-export function attemptRegistration(firstName, lastName, email, password, confirmPassword) {
+export function attemptRegistration(formName, firstName, lastName, email, password, confirmPassword) {
   return dispatch => {
     axios.post(getUrl('/register'), {
       first_name: firstName,
@@ -78,7 +64,7 @@ export function attemptRegistration(firstName, lastName, email, password, confir
       const { user, token } = res.data.data;
       dispatch(loginSuccess(user, token));
     }).catch(error => {
-      dispatch(registrationFailure(error.response))
+      dispatch(authFailure(formName, error.response))
     })
   }
 }

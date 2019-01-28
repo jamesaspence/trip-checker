@@ -6,7 +6,7 @@ import { attemptLogin } from '../../../actions/auth';
 import { validateEmpty } from '../../../util/validate';
 
 const mapDispatchToProps = dispatch => ({
-  attemptLogin: (email, password) => dispatch(attemptLogin(email, password))
+  attemptLogin: (email, password) => dispatch(attemptLogin('login', email, password))
 });
 
 class LoginForm extends Component {
