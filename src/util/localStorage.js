@@ -20,13 +20,17 @@ export function remove(key) {
   return localStorage.removeItem(key);
 }
 
+export function hasKey(key) {
+  return typeof get(key) !== 'undefined';
+}
+
 /**
  * Retrieves the user.
  *
  * @returns {object}
  */
 export function getUser() {
-  return window.JSON.parse(get(USER_KEY));
+  return hasKey(USER_KEY) ? window.JSON.parse(get(USER_KEY)) : undefined;
 }
 
 export function getToken() {
