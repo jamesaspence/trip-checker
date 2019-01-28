@@ -1,5 +1,6 @@
 import { ANSWER_QUESTION, INCREMENT, TOGGLE_CHECKBOX } from '../actions';
 import { LOGIN_SUCCESS, VALIDATE_FORM } from '../actions/auth';
+import { getUser, getToken } from '../util/localStorage';
 
 import questions from '../questions.json';
 
@@ -7,8 +8,8 @@ const initialState = {
   answeredQuestions: [],
   questions: questions,
   currentIndex: 0,
-  user: undefined,
-  token: undefined,
+  user: getUser(),
+  token: getToken(),
   validation: {}
 };
 

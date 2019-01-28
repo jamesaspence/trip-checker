@@ -1,5 +1,5 @@
 import axios from 'axios';
-import {getToken, getUser, setUser} from '../util/localStorage';
+import { setUser } from '../util/localStorage';
 
 export const VALIDATE_FORM = 'VALIDATE_FORM';
 export const LOGIN_SUCCESS = 'LOGIN_SUCCESS';
