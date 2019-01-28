@@ -2,6 +2,7 @@ import { connect } from 'react-redux';
 import React, { Component } from 'react';
 import PackContainer from './packing/PackContainer';
 import AuthContainer from './auth/AuthContainer';
+import AppBar from './common/AppBar';
 
 import './App.scss';
 
@@ -13,9 +14,12 @@ class App extends Component {
   render () {
     const { user } = this.props;
 
-    return <div className="app">
-      { typeof user === 'undefined' ? <AuthContainer /> : <PackContainer /> }
-    </div>;
+    return (
+      <div className="app">
+        <AppBar />
+        { typeof user === 'undefined' ? <AuthContainer /> : <PackContainer /> }
+      </div>
+    );
   }
 }
 
