@@ -3,7 +3,7 @@ import { setUser, clearUserAndToken } from '../util/localStorage';
 
 export const VALIDATE_FORM = 'VALIDATE_FORM';
 export const LOGIN_SUCCESS = 'LOGIN_SUCCESS';
-export const LOGOUT = 'logout';
+export const LOGOUT = 'LOGOUT';
 
 const getUrl = relativeUrl => `${process.env.REACT_APP_API_URL}${relativeUrl}`;
 
