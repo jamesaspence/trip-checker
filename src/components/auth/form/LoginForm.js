@@ -27,13 +27,16 @@ class LoginForm extends Component {
   onValidate(formValues) {
     const errors = {};
 
-    if (isEmpty(formValues.email)) {
-      errors.email = 'Please provide a valid email address.';
-    }
+    const requiredFields = {
+      email: 'email',
+      password: 'password',
+    };
 
-    if (isEmpty(formValues.password)) {
-      errors.password = 'Please provide a password';
-    }
+    Object.keys(requiredFields).forEach(field => {
+      if (isEmpty(formValues[field])) {
+        errors[field] = `Please provide a ${requiredFields[field]}.`;
+      }
+    });
 
     return errors;
   }

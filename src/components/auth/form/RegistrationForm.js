@@ -1,10 +1,38 @@
 import React, { Component } from 'react';
 import AuthForm from './AuthForm';
 import FormInput from './FormInput';
+import { isEmpty } from './validate';
 
 class RegistrationForm extends Component {
+  constructor(props) {
+    super(props);
+    this.onSubmit = this.onSubmit.bind(this);
+    this.onValidate = this.onValidate.bind(this);
+  }
+
   onSubmit(formValues) {
 
+  }
+
+  onValidate(formValues) {
+    const errors = {};
+
+    const requiredFields = {
+      first_name: 'first name',
+      last_name: 'last name',
+      email: 'email',
+      confirm_email: 'email confirmation',
+      password: 'password',
+      confirm_password: 'password confirmation'
+    };
+
+    Object.keys(requiredFields).forEach(field => {
+      if (isEmpty(formValues[field])) {
+        errors[field] = `Please provide a ${requiredFields[field]}.`;
+      }
+    });
+
+    return errors;
   }
 
   render() {
@@ -13,6 +41,8 @@ class RegistrationForm extends Component {
     return (
       <AuthForm
         name="registration"
+        onValidate={this.onValidate}
+        onSubmit={this.onSubmit}
         active={active}>
         <FormInput type="text" name="first_name" placeholder="First Name" autoComplete="given-name" />
         <FormInput type="text" name="last_name" placeholder="Last Name" autoComplete="family-name" />
