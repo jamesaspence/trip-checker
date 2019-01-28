@@ -18,9 +18,6 @@ class LoginForm extends Component {
   }
 
   onSubmit(formValues) {
-    console.log('submitting to API');
-    console.log(formValues);
-
     this.props.attemptLogin(formValues.email, formValues.password);
   }
 
