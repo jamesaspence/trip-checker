@@ -3,7 +3,7 @@ import AuthForm from './AuthForm';
 import FormInput from './FormInput';
 import { connect } from 'react-redux';
 import { attemptLogin } from '../../../actions/auth';
-import { validateEmpty } from './validate';
+import { validateEmpty } from '../../../util/validate';
 
 const mapDispatchToProps = dispatch => ({
   attemptLogin: (email, password) => dispatch(attemptLogin(email, password))

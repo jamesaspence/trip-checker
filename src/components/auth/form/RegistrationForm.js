@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import AuthForm from './AuthForm';
 import FormInput from './FormInput';
-import { validateEmpty } from './validate';
+import { validateEmpty } from '../../../util/validate';
 
 class RegistrationForm extends Component {
   constructor(props) {
