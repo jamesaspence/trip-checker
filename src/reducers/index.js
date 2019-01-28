@@ -50,7 +50,7 @@ export default (state = initialState, action) => {
       };
     case LOGOUT:
       return {
-        ...state,
+        ...initialState,
         user: undefined,
         token: undefined
       };
