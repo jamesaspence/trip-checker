@@ -1,7 +1,13 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 import AuthForm from './AuthForm';
 import FormInput from './FormInput';
 import { validateEmpty } from '../../../util/validate';
+import { attemptRegistration } from '../../../actions/auth';
+
+const mapDispatchToProps = dispatch => ({
+  attemptRegistration: (firstName, lastName, email, password, confirmPassword) => dispatch(attemptRegistration(firstName, lastName, email, password, confirmPassword))
+});
 
 class RegistrationForm extends Component {
   constructor(props) {
@@ -11,7 +17,7 @@ class RegistrationForm extends Component {
   }
 
   onSubmit(formValues) {
-
+    this.props.attemptRegistration(formValues.first_name, formValues.last_name, formValues.email, formValues.password, formValues.confirm_password);
   }
 
   onValidate(formValues) {
@@ -47,4 +53,4 @@ class RegistrationForm extends Component {
   }
 }
 
-export default RegistrationForm;
+export default connect(state => state, mapDispatchToProps)(RegistrationForm);
