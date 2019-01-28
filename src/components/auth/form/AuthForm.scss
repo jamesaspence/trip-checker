@@ -1,10 +1,8 @@
 .auth-form {
-  flex: 9;
   display: none;
-  flex-direction: column;
 
   &.active {
-    display: flex;
+    display: block;
   }
 
   .submit-form {
@@ -24,11 +22,17 @@
     }
   }
 
-  .error-message {
-    background-color: #b30000;
-    margin: 4px;
-    padding: 10px;
-    font-size: 16px;
-    font-weight: bold;
+  .form-errors {
+    margin: 15px 0 0;
+    padding-bottom: 15px;
+    border-bottom: 1px solid #888;
+
+    .error-message {
+      background-color: #b30000;
+      margin: 4px 0;
+      padding: 10px;
+      font-size: 16px;
+      font-weight: bold;
+    }
   }
 }
