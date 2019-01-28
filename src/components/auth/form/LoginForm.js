@@ -3,6 +3,7 @@ import AuthForm from './AuthForm';
 import FormInput from './FormInput';
 import { connect } from 'react-redux';
 import { attemptLogin } from '../../../actions/auth';
+import { isEmpty } from './validate';
 
 const mapDispatchToProps = dispatch => ({
   attemptLogin: (email, password) => dispatch(attemptLogin(email, password))
@@ -13,6 +14,7 @@ class LoginForm extends Component {
     super(props);
 
     this.onSubmit = this.onSubmit.bind(this);
+    this.onValidate = this.onValidate.bind(this);
   }
 
   onSubmit(formValues) {
@@ -20,6 +22,20 @@ class LoginForm extends Component {
     console.log(formValues);
 
     this.props.attemptLogin(formValues.email, formValues.password);
+  }
+
+  onValidate(formValues) {
+    const errors = {};
+
+    if (isEmpty(formValues.email)) {
+      errors.email = 'Please provide a valid email address.';
+    }
+
+    if (isEmpty(formValues.password)) {
+      errors.password = 'Please provide a password';
+    }
+
+    return errors;
   }
 
   render() {
@@ -30,7 +46,7 @@ class LoginForm extends Component {
         name="login"
         active={active}
         onSubmit={this.onSubmit}
-        requiredFields={["email", "password"]}>
+        onValidate={this.onValidate}>
         <FormInput type="email" name="email" placeholder="Email" autoComplete="email" />
         <FormInput type="password" name="password" placeholder="Password" autoComplete="current-password" />
       </AuthForm>

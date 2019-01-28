@@ -14,7 +14,7 @@ const mapDispatchToProps = dispatch => ({
 
 class AuthForm extends Component {
   static defaultProps = {
-    requiredFields: []
+    onValidate: () => ({})
   };
 
   constructor(props) {
@@ -33,19 +33,10 @@ class AuthForm extends Component {
     event.preventDefault();
 
     const { formValues } = this.state;
-    const { requiredFields, name } = this.props;
-    const errors = {};
-
-    requiredFields.forEach(key => {
-      if (!formValues.hasOwnProperty(key) || typeof formValues[key] !== 'string' || formValues[key].trim() === '') {
-        errors[key] = `Please fill in the '${key}' field.`;
-      }
-    });
+    const { name } = this.props;
+    const errors = this.props.onValidate(formValues);
 
     if (Object.keys(errors).length > 0) {
-      // this.setState({
-      //   errors
-      // });
       this.props.validateForm(name, errors);
       return;
     }
