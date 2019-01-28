@@ -43,19 +43,19 @@ export default (state = initialState, action) => {
     case LOGIN_SUCCESS:
       const { user, token } = rest;
       return {
+        ...state,
         token,
-        user,
-        ...state
+        user
       };
     case VALIDATE_FORM:
       const { name, errors } = rest;
-      const { validation, ...restOfState } = state;
+      const { validation } = state;
 
       validation[name] = errors;
 
       return {
-        validation,
-        ...restOfState
+        ...state,
+        validation
       };
 
 
