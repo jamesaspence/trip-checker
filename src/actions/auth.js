@@ -34,12 +34,12 @@ export function attemptLogin(email, password) {
       password
     }).then(res => {
       const { user, token } = res.data.data;
-      dispatch(loginSuccess(user, token))
+      dispatch(loginSuccess(user, token));
     })
       .catch(error => {
         console.log(error);
         console.log(error.response);
-        dispatch(loginFailure(error.response))
+        dispatch(loginFailure(error.response));
       });
   }
 }
