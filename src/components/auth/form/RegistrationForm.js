@@ -12,6 +12,7 @@ class RegistrationForm extends Component {
 
     return (
       <AuthForm
+        name="registration"
         active={active}
         requiredFields={["first_name", "last_name", "email", "confirm_email", "password", "confirm_password"]}>
         <FormInput type="text" name="first_name" placeholder="First Name" autoComplete="given-name" />

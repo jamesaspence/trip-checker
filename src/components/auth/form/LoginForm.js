@@ -27,6 +27,7 @@ class LoginForm extends Component {
 
     return (
       <AuthForm
+        name="login"
         active={active}
         onSubmit={this.onSubmit}
         requiredFields={["email", "password"]}>

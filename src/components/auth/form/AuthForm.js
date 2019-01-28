@@ -1,6 +1,16 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { validateForm } from '../../../actions/auth';
 
 import './AuthForm.scss';
+
+const mapStateToProps = (state, ownProps) => ({
+  errors: state.validation[ownProps.name]
+});
+
+const mapDispatchToProps = dispatch => ({
+  validateForm: (name, errors) => dispatch(validateForm(name, errors))
+});
 
 class AuthForm extends Component {
   static defaultProps = {
@@ -15,8 +25,7 @@ class AuthForm extends Component {
     this.wrapInput = this.wrapInput.bind(this);
 
     this.state = {
-      formValues: {},
-      errors: {}
+      formValues: {}
     };
   }
 
@@ -24,7 +33,7 @@ class AuthForm extends Component {
     event.preventDefault();
 
     const { formValues } = this.state;
-    const { requiredFields } = this.props;
+    const { requiredFields, name } = this.props;
     const errors = {};
 
     requiredFields.forEach(key => {
@@ -34,9 +43,10 @@ class AuthForm extends Component {
     });
 
     if (Object.keys(errors).length > 0) {
-      this.setState({
-        errors
-      });
+      // this.setState({
+      //   errors
+      // });
+      this.props.validateForm(name, errors);
       return;
     }
 
@@ -54,7 +64,7 @@ class AuthForm extends Component {
   }
 
   wrapInput(input, key) {
-    const { errors } = this.state;
+    const { errors = {} } = this.props;
 
     return React.cloneElement(input, {
       key,
@@ -64,8 +74,7 @@ class AuthForm extends Component {
   }
 
   render() {
-    const { active, children } = this.props;
-    const { errors } = this.state;
+    const { active, children, errors = {} } = this.props;
 
     return (
       <form className={`auth-form ${active ? `active` : ``}`} onSubmit={this.onSubmit}>
@@ -83,4 +92,4 @@ class AuthForm extends Component {
   }
 }
 
-export default AuthForm;
+export default connect(mapStateToProps, mapDispatchToProps)(AuthForm);

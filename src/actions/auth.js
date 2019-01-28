@@ -1,5 +1,6 @@
 import axios from 'axios';
 
+export const VALIDATE_FORM = 'VALIDATE_FORM';
 export const LOGIN_SUCCESS = 'LOGIN_SUCCESS';
 export const LOGIN_FAILURE = 'LOGIN_FAILURE';
 
@@ -16,6 +17,14 @@ export function loginFailure(response) {
     type: LOGIN_FAILURE,
     response
   };
+}
+
+export function validateForm(name, errors) {
+  return {
+    type: VALIDATE_FORM,
+    name,
+    errors
+  }
 }
 
 export function attemptLogin(email, password) {

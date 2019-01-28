@@ -1,12 +1,15 @@
 import { ANSWER_QUESTION, INCREMENT, TOGGLE_CHECKBOX } from '../actions';
-import { LOGIN_SUCCESS } from '../actions/auth';
+import { LOGIN_SUCCESS, VALIDATE_FORM } from '../actions/auth';
 
 import questions from '../questions.json';
 
 const initialState = {
   answeredQuestions: [],
   questions: questions,
-  currentIndex: 0
+  currentIndex: 0,
+  user: undefined,
+  token: undefined,
+  validation: {}
 };
 
 export default (state = initialState, action) => {
@@ -44,6 +47,17 @@ export default (state = initialState, action) => {
         user,
         ...state
       };
+    case VALIDATE_FORM:
+      const { name, errors } = rest;
+      const { validation, ...restOfState } = state;
+
+      validation[name] = errors;
+
+      return {
+        validation,
+        ...restOfState
+      };
+
 
     default:
       return state;
