@@ -1,4 +1,4 @@
-import {LOGIN_SUCCESS, LOGOUT, VALIDATE_FORM} from '../actions/auth';
+import { LOGIN_SUCCESS, VALIDATE_FORM } from '../actions/auth';
 import { getUser, getToken } from '../util/localStorage';
 
 const initialState = {
