@@ -1,10 +1,13 @@
 import axios from 'axios';
+import {getToken, getUser, setUser} from '../util/localStorage';
 
 export const VALIDATE_FORM = 'VALIDATE_FORM';
 export const LOGIN_SUCCESS = 'LOGIN_SUCCESS';
 export const LOGIN_FAILURE = 'LOGIN_FAILURE';
 
 export function loginSuccess(user, token) {
+  setUser(user, token);
+
   return {
     type: LOGIN_SUCCESS,
     user,
