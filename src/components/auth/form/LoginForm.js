@@ -3,7 +3,7 @@ import AuthForm from './AuthForm';
 import FormInput from './FormInput';
 import { connect } from 'react-redux';
 import { attemptLogin } from '../../../actions/auth';
-import { isEmpty } from './validate';
+import { validateEmpty } from './validate';
 
 const mapDispatchToProps = dispatch => ({
   attemptLogin: (email, password) => dispatch(attemptLogin(email, password))
@@ -25,20 +25,12 @@ class LoginForm extends Component {
   }
 
   onValidate(formValues) {
-    const errors = {};
-
-    const requiredFields = {
+    const fields = {
       email: 'email',
       password: 'password',
     };
 
-    Object.keys(requiredFields).forEach(field => {
-      if (isEmpty(formValues[field])) {
-        errors[field] = `Please provide a ${requiredFields[field]}.`;
-      }
-    });
-
-    return errors;
+    return validateEmpty(formValues, fields);
   }
 
   render() {

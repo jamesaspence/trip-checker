@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import AuthForm from './AuthForm';
 import FormInput from './FormInput';
-import { isEmpty } from './validate';
+import { validateEmpty } from './validate';
 
 class RegistrationForm extends Component {
   constructor(props) {
@@ -15,9 +15,7 @@ class RegistrationForm extends Component {
   }
 
   onValidate(formValues) {
-    const errors = {};
-
-    const requiredFields = {
+    const fields = {
       first_name: 'first name',
       last_name: 'last name',
       email: 'email',
@@ -26,13 +24,7 @@ class RegistrationForm extends Component {
       confirm_password: 'password confirmation'
     };
 
-    Object.keys(requiredFields).forEach(field => {
-      if (isEmpty(formValues[field])) {
-        errors[field] = `Please provide a ${requiredFields[field]}.`;
-      }
-    });
-
-    return errors;
+    return validateEmpty(formValues, fields);
   }
 
   render() {
