@@ -41,6 +41,7 @@ class AuthForm extends Component {
       return;
     }
 
+    this.props.validateForm(name, {});
     this.props.onSubmit(this.state.formValues);
   }
 
