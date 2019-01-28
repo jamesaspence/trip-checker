@@ -5,7 +5,7 @@ import { validateForm } from '../../../actions/auth';
 import './AuthForm.scss';
 
 const mapStateToProps = (state, ownProps) => ({
-  errors: state.validation[ownProps.name]
+  errors: state.auth.validation[ownProps.name]
 });
 
 const mapDispatchToProps = dispatch => ({

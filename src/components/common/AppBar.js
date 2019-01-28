@@ -5,7 +5,7 @@ import Nav from './Nav';
 import './AppBar.scss';
 
 const mapStateToProps = state => ({
-  user: state.user
+  user: state.auth.user
 });
 
 const AppBar = ({ user }) => (

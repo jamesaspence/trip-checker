@@ -6,8 +6,8 @@ import { answerPackedQuestion, incrementQuestion } from '../../../actions';
 import React from 'react';
 
 const mapStateToProps = state => ({
-  questions: state.questions,
-  currentIndex: state.currentIndex
+  questions: state.packing.questions,
+  currentIndex: state.packing.currentIndex
 });
 
 const mapDispatchToProps = dispatch => ({

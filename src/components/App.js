@@ -7,7 +7,7 @@ import AppBar from './common/AppBar';
 import './App.scss';
 
 const mapStateToProps = state => ({
-  user: state.user
+  user: state.auth.user
 });
 
 class App extends Component {

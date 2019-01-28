@@ -1,14 +1,9 @@
 import React, { Component } from 'react';
-import { connect } from 'react-redux';
 import Switcher, { SWITCH_LOGIN, SWITCH_REGISTRATION } from './Switcher';
 import LoginForm from './form/LoginForm';
 import RegistrationForm from './form/RegistrationForm';
 
 import './AuthContainer.scss';
-
-const mapStateToProps = () => ({});
-
-// const mapDispatchToProps = () => {};
 
 class AuthContainer extends Component {
   constructor(props) {
@@ -40,4 +35,4 @@ class AuthContainer extends Component {
   }
 }
 
-export default connect(mapStateToProps)(AuthContainer);
+export default AuthContainer;

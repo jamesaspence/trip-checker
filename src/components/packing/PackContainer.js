@@ -6,9 +6,9 @@ import { connect } from 'react-redux';
 import './PackContainer.scss';
 
 const mapStateToProps = state => ({
-  questions: state.questions,
-  currentIndex: state.currentIndex,
-  answeredQuestions: state.answeredQuestions
+  questions: state.packing.questions,
+  currentIndex: state.packing.currentIndex,
+  answeredQuestions: state.packing.answeredQuestions
 });
 
 const ConnectedPackContainer = ({ questions, answeredQuestions, currentIndex }) => {
