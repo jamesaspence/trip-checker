@@ -5,8 +5,8 @@ import Header from './Header';
 import './AnsweredQuestionContainer.scss';
 
 const mapStateToProps = state => ({
-  questions: state.questions,
-  answeredQuestions: state.answeredQuestions
+  questions: state.packing.questions,
+  answeredQuestions: state.packing.answeredQuestions
 });
 
 const AnsweredQuestionContainer = ({ questions, answeredQuestions }) => {

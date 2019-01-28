@@ -2,7 +2,7 @@ import { Component } from 'react';
 import React from 'react';
 import Checkbox from './Checkbox';
 import './AnsweredQuestion.scss';
-import { toggleCheckbox } from '../../actions';
+import { toggleCheckbox } from '../../../actions';
 import { connect } from 'react-redux';
 
 const mapDispatchToProps = dispatch => ({

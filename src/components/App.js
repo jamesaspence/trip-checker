@@ -1,11 +1,26 @@
-import React from 'react';
-import { Component } from 'react';
-import PackContainer from './PackContainer';
+import { connect } from 'react-redux';
+import React, { Component } from 'react';
+import PackContainer from './packing/PackContainer';
+import AuthContainer from './auth/AuthContainer';
+import AppBar from './common/AppBar';
+
+import './App.scss';
+
+const mapStateToProps = state => ({
+  user: state.auth.user
+});
 
 class App extends Component {
   render () {
-    return <PackContainer/>;
+    const { user } = this.props;
+
+    return (
+      <div className="app">
+        <AppBar />
+        { typeof user === 'undefined' ? <AuthContainer /> : <PackContainer /> }
+      </div>
+    );
   }
 }
 
-export default App;
+export default connect(mapStateToProps)(App);
