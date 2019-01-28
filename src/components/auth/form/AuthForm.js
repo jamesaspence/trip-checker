@@ -16,7 +16,7 @@ class AuthForm extends Component {
 
     this.state = {
       formValues: {},
-      errors: []
+      errors: {}
     };
   }
 
@@ -25,15 +25,15 @@ class AuthForm extends Component {
 
     const { formValues } = this.state;
     const { requiredFields } = this.props;
-    const errors = [];
+    const errors = {};
 
     requiredFields.forEach(key => {
       if (!formValues.hasOwnProperty(key) || typeof formValues[key] !== 'string' || formValues[key].trim() === '') {
-        errors.push(key);
+        errors[key] = `Please fill in the '${key}' field.`;
       }
     });
 
-    if (errors.length > 0) {
+    if (Object.keys(errors).length > 0) {
       this.setState({
         errors
       });
@@ -59,16 +59,19 @@ class AuthForm extends Component {
     return React.cloneElement(input, {
       key,
       onChange: this.onChange,
-      error: errors.includes(input.props.name)
+      error: errors.hasOwnProperty(input.props.name)
     });
   }
 
   render() {
-    const { active, header, children } = this.props;
+    const { active, children } = this.props;
+    const { errors } = this.state;
 
     return (
       <form className={`auth-form ${active ? `active` : ``}`} onSubmit={this.onSubmit}>
-        <h3 className="auth-form-header">{header}</h3>
+        <div className="form-errors">
+          {Object.keys(errors).map(key => <p key={key} className="error-message">{errors[key]}</p>)}
+        </div>
         <div className="form-items">
           {children.map(this.wrapInput)}
           <button className="submit-form">

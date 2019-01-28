@@ -27,12 +27,11 @@ class LoginForm extends Component {
 
     return (
       <AuthForm
-        header="Login"
         active={active}
         onSubmit={this.onSubmit}
         requiredFields={["email", "password"]}>
-        <FormInput type="email" name="email" placeholder="Email" autoComplete="email" required />
-        <FormInput type="password" name="password" placeholder="Password" autoComplete="current-password" required />
+        <FormInput type="email" name="email" placeholder="Email" autoComplete="email" />
+        <FormInput type="password" name="password" placeholder="Password" autoComplete="current-password" />
       </AuthForm>
     );
   }

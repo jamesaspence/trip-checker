@@ -1,17 +1,29 @@
+$inactive-border-color: #bbb;
+$active-border-color: #eee55b;
+
 .switcher {
   flex: 1;
-  display: flex;
-  background-color: #fff;
+  max-height: 50px;
 
   .switch-option {
+    display: inline-block;
     cursor: pointer;
-    flex: 1;
-    padding: 10px;
+    margin-right: 15px;
     text-align: center;
-    border-right: 2px solid gray;
+    border-bottom: 2px solid transparent;
+    color: #888;
 
-    &.active, &:hover {
-      background-color: #ccc;
+    &:hover {
+      border-bottom-color: $inactive-border-color;
+
+      &.active {
+        border-bottom-color: $active-border-color;
+      }
+    }
+
+    &.active {
+      color: #fff;
+      border-bottom-color: $active-border-color;
     }
 
     &:last-child {
@@ -20,7 +32,6 @@
 
     .option-text {
       margin: 0;
-      color: #000;
     }
   }
 }

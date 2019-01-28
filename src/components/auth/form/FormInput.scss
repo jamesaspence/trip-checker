@@ -1,16 +1,20 @@
-.auth-form-error {
-  color: red;
-  display: block;
-  margin-top: 10px;
+.form-input {
+  color: #fff;
+  margin: 15px 0 0;
+  background-color: transparent;
+  border: 2px solid transparent;
+  border-bottom-color: #ddd;
+  outline: none;
+  font-size: 18px;
+  padding: 5px;
+  width: 100%;
+  box-sizing: border-box;
 
-  .form-input {
-    color: #000;
-    border: none;
-    outline: none;
-    font-size: 16px;
-    padding: 5px;
-    margin: 0;
-    width: 100%;
-    box-sizing: border-box;
+  &::placeholder {
+    color: #ddd;
+  }
+
+  &.error {
+    border-bottom-color: #b30000;
   }
 }

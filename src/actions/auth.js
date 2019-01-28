@@ -14,7 +14,7 @@ export function loginSuccess(user, token) {
 export function loginFailure(response) {
   return {
     type: LOGIN_FAILURE,
-    response: response
+    response
   };
 }
 
@@ -27,6 +27,10 @@ export function attemptLogin(email, password) {
       const { user, token } = res.data.data;
       dispatch(loginSuccess(user, token))
     })
-      .catch(error => dispatch(loginFailure(error.response)));
+      .catch(error => {
+        console.log(error);
+        console.log(error.response);
+        dispatch(loginFailure(error.response))
+      });
   }
 }

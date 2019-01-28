@@ -10,8 +10,8 @@ const SwitchOption = ({ onSwitch, currentSwitch, switchState, text }) => (
 
 const Switcher = ({ onSwitch, currentSwitch }) => (
   <div className="switcher">
-    <SwitchOption onSwitch={onSwitch} currentSwitch={currentSwitch} switchState={SWITCH_LOGIN} text="Login"/>
-    <SwitchOption onSwitch={onSwitch} currentSwitch={currentSwitch} switchState={SWITCH_REGISTRATION} text="Register"/>
+    <SwitchOption onSwitch={onSwitch} currentSwitch={currentSwitch} switchState={SWITCH_LOGIN} text="SIGN IN"/>
+    <SwitchOption onSwitch={onSwitch} currentSwitch={currentSwitch} switchState={SWITCH_REGISTRATION} text="SIGN UP"/>
   </div>
 );
 
