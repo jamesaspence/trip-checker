@@ -1,9 +1,18 @@
 import axios from 'axios';
-import { setUser } from '../util/localStorage';
+import { setUser, clearUserAndToken } from '../util/localStorage';
 
 export const VALIDATE_FORM = 'VALIDATE_FORM';
 export const LOGIN_SUCCESS = 'LOGIN_SUCCESS';
 export const LOGIN_FAILURE = 'LOGIN_FAILURE';
+export const LOGOUT = 'logout';
+
+export function logout() {
+  clearUserAndToken();
+
+  return {
+    type: LOGOUT
+  }
+}
 
 export function loginSuccess(user, token) {
   setUser(user, token);

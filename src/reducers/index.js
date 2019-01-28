@@ -1,5 +1,5 @@
 import { ANSWER_QUESTION, INCREMENT, TOGGLE_CHECKBOX } from '../actions';
-import { LOGIN_SUCCESS, VALIDATE_FORM } from '../actions/auth';
+import {LOGIN_SUCCESS, LOGOUT, VALIDATE_FORM} from '../actions/auth';
 import { getUser, getToken } from '../util/localStorage';
 
 import questions from '../questions.json';
@@ -47,6 +47,12 @@ export default (state = initialState, action) => {
         ...state,
         token,
         user
+      };
+    case LOGOUT:
+      return {
+        ...state,
+        user: undefined,
+        token: undefined
       };
     case VALIDATE_FORM:
       const { name, errors } = rest;
