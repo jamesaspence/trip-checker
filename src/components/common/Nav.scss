@@ -1,6 +1,11 @@
 .nav {
   justify-self: end;
 
+  .nav-name {
+    display: inline-block;
+    margin: 0 10px;
+  }
+
   .nav-button {
     outline: none;
     border: none;
