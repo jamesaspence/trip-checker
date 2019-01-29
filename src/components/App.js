@@ -3,6 +3,7 @@ import React, { Component } from 'react';
 import PackContainer from './packing/PackContainer';
 import AuthContainer from './auth/AuthContainer';
 import AppBar from './common/AppBar';
+import ErrorBoundary from './common/ErrorBoundary';
 
 import './App.scss';
 
@@ -17,7 +18,9 @@ class App extends Component {
     return (
       <div className="app">
         <AppBar />
-        { typeof user === 'undefined' ? <AuthContainer /> : <PackContainer /> }
+        <ErrorBoundary>
+          { typeof user === 'undefined' ? <AuthContainer /> : <PackContainer /> }
+        </ErrorBoundary>
       </div>
     );
   }
