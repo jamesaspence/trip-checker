@@ -12,6 +12,10 @@ const mapStateToProps = state => ({
 });
 
 const ConnectedPackContainer = ({ questions, answeredQuestions, currentIndex }) => {
+  if (questions.length > 0) {
+    throw new Error('Oh well this happened');
+  }
+
   return (
     <div className="pack-container full-container">
       {questions.length > currentIndex ? (<QuestionContainer/>) : ''}

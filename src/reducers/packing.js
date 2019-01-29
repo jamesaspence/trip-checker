@@ -1,4 +1,4 @@
-import { ANSWER_QUESTION, INCREMENT, TOGGLE_CHECKBOX } from '../actions';
+import { ANSWER_QUESTION, INCREMENT, TOGGLE_CHECKBOX } from '../actions/packing';
 
 import questions from '../questions.json';
 
