@@ -2,22 +2,16 @@ import React from 'react';
 import QuestionContainer from './question/QuestionContainer';
 import AnsweredQuestionContainer from './list/AnsweredQuestionContainer';
 import { connect } from 'react-redux';
-import { Redirect } from 'react-router-dom';
 
 import './PackContainer.scss';
 
 const mapStateToProps = state => ({
-  user: state.auth.user,
   questions: state.packing.questions,
   currentIndex: state.packing.currentIndex,
   answeredQuestions: state.packing.answeredQuestions
 });
 
-const ConnectedPackContainer = ({ user, questions, answeredQuestions, currentIndex }) => {
-  if (typeof user === 'undefined') {
-    return <Redirect to="/login" />;
-  }
-
+const ConnectedPackContainer = ({ questions, answeredQuestions, currentIndex }) => {
   return (
     <div className="pack-container full-container">
       {questions.length > currentIndex ? (<QuestionContainer/>) : ''}
