@@ -1,9 +1,15 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 import Switcher, { SWITCH_LOGIN, SWITCH_REGISTRATION } from './Switcher';
 import LoginForm from './form/LoginForm';
 import RegistrationForm from './form/RegistrationForm';
+import { Redirect } from 'react-router-dom';
 
 import './AuthContainer.scss';
+
+const mapStateToProps = state => ({
+  user: state.auth.user
+});
 
 class AuthContainer extends Component {
   constructor(props) {
@@ -24,6 +30,11 @@ class AuthContainer extends Component {
 
   render() {
     const { form } = this.state;
+    const { user } = this.props;
+
+    if (typeof user !== 'undefined') {
+      return <Redirect to="/" />
+    }
 
     return (
       <div className="auth-container full-container">
@@ -35,4 +46,4 @@ class AuthContainer extends Component {
   }
 }
 
-export default AuthContainer;
+export default connect(mapStateToProps)(AuthContainer);

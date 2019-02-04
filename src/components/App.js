@@ -1,29 +1,23 @@
-import { connect } from 'react-redux';
-import React, { Component } from 'react';
+import React from 'react';
 import PackContainer from './packing/PackContainer';
 import AuthContainer from './auth/AuthContainer';
 import AppBar from './common/AppBar';
 import ErrorBoundary from './common/ErrorBoundary';
+import { BrowserRouter as Router, Route } from 'react-router-dom'
 
 import './App.scss';
 
-const mapStateToProps = state => ({
-  user: state.auth.user
-});
 
-class App extends Component {
-  render () {
-    const { user } = this.props;
+const App = () => (
+  <Router>
+    <div className="app">
+      <AppBar />
+      <ErrorBoundary>
+        <Route path="/login" exact component={AuthContainer} />
+        <Route path="/" component={PackContainer} />
+      </ErrorBoundary>
+    </div>
+  </Router>
+);
 
-    return (
-      <div className="app">
-        <AppBar />
-        <ErrorBoundary>
-          { typeof user === 'undefined' ? <AuthContainer /> : <PackContainer /> }
-        </ErrorBoundary>
-      </div>
-    );
-  }
-}
-
-export default connect(mapStateToProps)(App);
+export default App;
