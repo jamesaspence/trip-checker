@@ -12,12 +12,12 @@ const mapDispatchToProps = dispatch => ({
   getTemplates: () => dispatch(getTemplates())
 });
 
-const renderTemplateItem = (templateItem, key) => {
-  const { name, items } = templateItem;
+const renderTemplateItem = templateItem => {
+  const { name, items, id } = templateItem;
   const parsedItems = items.map(item => item.item);
 
   return (
-    <TemplateItem key={key} name={name} items={parsedItems} />
+    <TemplateItem key={id} id={id} name={name} items={parsedItems} />
   );
 };
 
