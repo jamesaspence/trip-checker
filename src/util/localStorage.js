@@ -30,11 +30,23 @@ export function hasKey(key) {
  * @returns {object}
  */
 export function getUser() {
-  return hasKey(USER_KEY) ? window.JSON.parse(get(USER_KEY)) : undefined;
+  return hasUser() ? window.JSON.parse(get(USER_KEY)) : undefined;
 }
 
 export function getToken() {
-  return get(TOKEN_KEY);
+  return hasToken() ? get(TOKEN_KEY) : undefined;
+}
+
+export function hasUser() {
+  return hasKey(USER_KEY)
+}
+
+export function hasToken() {
+  return hasKey(TOKEN_KEY);
+}
+
+export function hasCredentials() {
+  return hasUser() && hasToken();
 }
 
 /**

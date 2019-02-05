@@ -2,41 +2,41 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import SectionHeader from '../common/SectionHeader';
 import TemplateItem from './TemplateItem';
+import { getTemplates } from '../../actions/template';
 
-const mapStateToProps = state => ({});
+const mapStateToProps = state => ({
+  templates: state.template.templates
+});
 
-const exampleList = [
-  'socks',
-  'pants',
-  'shoes',
-  'hat',
-  'tie',
-  'laptop',
-  'toiletries',
-  't-shirts',
-  'button up shirts',
-  'shorts',
-  'reading glasses',
-  'excedrin',
-  'phone charger',
-  'switch',
-  'switch charger',
-  'breath of the wild',
-  'smash bros',
-  'spare keys'
-];
+const mapDispatchToProps = dispatch => ({
+  getTemplates: () => dispatch(getTemplates())
+});
+
+const renderTemplateItem = (templateItem, key) => {
+  const { name, items } = templateItem;
+  const parsedItems = items.map(item => item.item);
+
+  return (
+    <TemplateItem key={key} name={name} items={parsedItems} />
+  );
+};
 
 class HomeContainer extends Component {
+
+  componentDidMount() {
+    this.props.getTemplates();
+  }
+
   render() {
+    const { templates } = this.props;
     return (
       <div className="home-container">
         <SectionHeader text="New List" />
-        <TemplateItem name="Template 1" items={exampleList} id="1" />
-        <TemplateItem name="Template 2" items={['item 1', 'item 2', 'item 3']} id="2" />
+        {templates.length > 0 ? templates.map(renderTemplateItem) : <p>Nothing!</p>}
         <SectionHeader text="Continue" />
       </div>
     );
   }
 }
 
-export default connect(mapStateToProps)(HomeContainer);
+export default connect(mapStateToProps, mapDispatchToProps)(HomeContainer);
