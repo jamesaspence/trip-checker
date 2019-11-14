@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
 import SectionHeader from '../common/SectionHeader';
 import TemplateItem from './TemplateItem';
 import { getTemplates } from '../../actions/template';
@@ -33,6 +34,10 @@ class HomeContainer extends Component {
       <div className="home-container">
         <SectionHeader text="New List" />
         {templates.length > 0 ? templates.map(renderTemplateItem) : <p>Nothing!</p>}
+        <Link to="/templates/new">
+
+          <button type="button" className="home-button new-templates-button">New</button>
+        </Link>
         <SectionHeader text="Continue" />
       </div>
     );
