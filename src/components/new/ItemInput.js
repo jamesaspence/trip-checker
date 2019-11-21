@@ -19,7 +19,6 @@ class ItemInput extends Component {
 
     return (
       <label htmlFor={`itemInput--${i}`} className="item-input">
-        <p className="item-leader">I need to pack</p>
         <input type="text" id={`itemInput--${i}`} onChange={this.onChange} className="item-input-inner" placeholder="...?" value={item}/>
       </label>
     )
