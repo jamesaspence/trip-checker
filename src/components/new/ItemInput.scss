@@ -1,0 +1,28 @@
+.item-input {
+  display: flex;
+}
+
+.item-leader, .item-input-inner {
+  margin: 15px 0 0;
+  font-size: 18px;
+  padding: 7px;
+}
+
+.item-input-inner {
+  color: #fff;
+  margin: 15px 0 0;
+  background-color: transparent;
+  border: 2px solid transparent;
+  border-bottom-color: #ddd;
+  padding: 5px;
+  outline: none;
+  box-sizing: border-box;
+
+  &::placeholder {
+    color: #ddd;
+  }
+
+  &.validate-error {
+    border-bottom-color: #b30000;
+  }
+}
