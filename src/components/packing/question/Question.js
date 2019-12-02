@@ -5,9 +5,12 @@ import './Question.scss';
 
 const Question = ({ question, onYes, onNo }) => (
   <div className="question">
-    <h1 className="question-text">
-      Did you pack {question}?
-    </h1>
+    <div className="question-text">
+      <h2>Did your pack your...</h2>
+      <h1 className="packed-item">
+        {question}?
+      </h1>
+    </div>
     <div className="buttons-container">
       <Button buttonClass="yes" text="Yep!" onClick={onYes}/>
       <Button buttonClass="no" text="S#&@" onClick={onNo}/>

@@ -4,9 +4,12 @@
 
 .question-text {
   text-align: center;
-  margin: 0;
   flex: 1;
+}
+
+.packed-item {
   font-size: 48px;
+  margin: 0;
 }
 
 .buttons-container {
