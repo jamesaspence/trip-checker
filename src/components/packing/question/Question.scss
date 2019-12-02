@@ -13,9 +13,9 @@
 }
 
 .buttons-container {
-  flex: 1;
+  flex: 1 1 40%;
   display: flex;
-  width: 40%;
+  max-width: 400px;
   margin: 20px auto;
   align-items: center;
   justify-content: space-between;

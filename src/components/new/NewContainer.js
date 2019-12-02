@@ -89,16 +89,15 @@ class NewContainer extends Component {
     return (
       <div className="new-container full-container">
         <div className="form-wrap half-height-container">
-          <h1>What do you need to pack today?</h1>
-          <h3>I need to pack...</h3>
+          <h1>Today I need to pack...</h1>
           <div className="new-items">
             { validationErrors.length > 0 &&
               <span className="error-message">You gotta fill in some fields, bud.</span>
             }
             { items.map((item, i) => <ItemInput key={i} focused={focusedIndex} validationError={validationErrors.includes(i)} onValChange={this.onValChanged} i={i} item={item} />) }
-            <button className="new-item button" type="button" onClick={this.onNewItem}>Add New</button>
+            <button className="new-item new-button" type="button" onClick={this.onNewItem}>Add New</button>
             { items.length > 0 &&
-              <button className="save-list button" type="button" onClick={this.onSubmit}>Save</button>
+              <button className="save-list new-button" type="button" onClick={this.onSubmit}>Save</button>
             }
           </div>
         </div>
