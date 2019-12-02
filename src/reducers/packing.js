@@ -1,10 +1,8 @@
-import { ANSWER_QUESTION, INCREMENT, TOGGLE_CHECKBOX } from '../actions/packing';
-
-import questions from '../questions.json';
+import { ANSWER_QUESTION, INCREMENT, TOGGLE_CHECKBOX, START_PACKING } from '../actions/packing';
 
 const initialState = {
   answeredQuestions: [],
-  questions: questions,
+  questions: [],
   currentIndex: 0,
 };
 
@@ -35,6 +33,11 @@ export default (state = initialState, action) => {
       return {
         ...state,
         answeredQuestions: modifiedQuestions
+      };
+    case START_PACKING:
+      return {
+        ...state,
+        questions: action.items
       };
 
     default:

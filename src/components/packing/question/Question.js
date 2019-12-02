@@ -6,7 +6,7 @@ import './Question.scss';
 const Question = ({ question, onYes, onNo }) => (
   <div className="question">
     <h1 className="question-text">
-      {question}
+      Did you pack {question}?
     </h1>
     <div className="buttons-container">
       <Button buttonClass="yes" text="Yep!" onClick={onYes}/>
