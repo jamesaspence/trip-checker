@@ -7,6 +7,7 @@ class ItemInput extends Component {
     super(props);
 
     this.onChange = this.onChange.bind(this);
+    this.onRef = this.onRef.bind(this);
   }
 
   onChange(e) {
@@ -14,12 +15,28 @@ class ItemInput extends Component {
     onValChange(i, e.target.value);
   }
 
+  onRef(component) {
+    if (component == null) {
+      return;
+    }
+
+    const { focused, i } = this.props;
+
+    if (focused == null) {
+      return;
+    }
+
+    if (i === focused) {
+      component.focus();
+    }
+  }
+
   render() {
     const { i, item } = this.props;
 
     return (
       <label htmlFor={`itemInput--${i}`} className="item-input">
-        <input type="text" id={`itemInput--${i}`} onChange={this.onChange} className="item-input-inner" placeholder="...?" value={item}/>
+        <input type="text" id={`itemInput--${i}`} onChange={this.onChange} ref={this.onRef} className="item-input-inner" placeholder="...?" value={item}/>
       </label>
     )
   }
