@@ -32,11 +32,11 @@ class ItemInput extends Component {
   }
 
   render() {
-    const { i, item } = this.props;
+    const { i, item, validationError } = this.props;
 
     return (
       <label htmlFor={`itemInput--${i}`} className="item-input">
-        <input type="text" id={`itemInput--${i}`} onChange={this.onChange} ref={this.onRef} className="item-input-inner" placeholder="...?" value={item}/>
+        <input type="text" id={`itemInput--${i}`} onChange={this.onChange} ref={this.onRef} className={`item-input-inner ${validationError ? 'validate-error' : ''}`} placeholder="...?" value={item}/>
       </label>
     )
   }

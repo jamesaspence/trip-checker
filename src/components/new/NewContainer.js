@@ -78,7 +78,7 @@ class NewContainer extends Component {
   }
 
   render() {
-    const { focusedIndex, items, submitted } = this.state;
+    const { focusedIndex, items, submitted, validationErrors } = this.state;
 
     if (submitted) {
       return (
@@ -92,7 +92,10 @@ class NewContainer extends Component {
           <h1>What do you need to pack today?</h1>
           <h3>I need to pack...</h3>
           <div className="new-items">
-            { items.map((item, i) => <ItemInput key={i} focused={focusedIndex} onValChange={this.onValChanged} i={i} item={item} />) }
+            { validationErrors.length > 0 &&
+              `You gotta fill in some fields, bud.`
+            }
+            { items.map((item, i) => <ItemInput key={i} focused={focusedIndex} validationError={validationErrors.includes(i)} onValChange={this.onValChanged} i={i} item={item} />) }
             <button className="new-item" type="button" onClick={this.onNewItem}>Add New</button>
             { items.length > 0 &&
               <button className="save-list" type="button" onClick={this.onSubmit}>Save</button>
