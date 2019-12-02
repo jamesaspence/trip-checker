@@ -18,6 +18,10 @@
 
     &.validate-error {
       border-bottom-color: #b30000;
+
+      &::placeholder {
+        color: #b30000;
+      }
     }
   }
 }

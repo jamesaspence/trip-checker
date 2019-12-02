@@ -5,4 +5,24 @@
 .new-items {
   display: flex;
   flex-direction: column;
+  width: 50%;
+
+  .error-message {
+    text-align: center;
+    color: #ff0000;
+    font-weight: bold;
+  }
+}
+
+.button {
+  background-color: #26893a;
+  border: none;
+  font-size: 20px;
+  font-weight: bold;
+  outline: none;
+  margin: 10px 0;
+  cursor: pointer;
+  padding: 10px 20px;
+  color: #fff;
+  border-radius: 15px;
 }
