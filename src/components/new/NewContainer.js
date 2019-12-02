@@ -16,8 +16,8 @@ class NewContainer extends Component {
     super(props);
 
     this.state = {
-      items: [],
-      focusedIndex: null,
+      items: [''],
+      focusedIndex: 0,
       validationErrors: [],
       submitted: false
     };
@@ -94,7 +94,9 @@ class NewContainer extends Component {
           <div className="new-items">
             { items.map((item, i) => <ItemInput key={i} focused={focusedIndex} onValChange={this.onValChanged} i={i} item={item} />) }
             <button className="new-item" type="button" onClick={this.onNewItem}>Add New</button>
-            <button className="save-list" type="button" onClick={this.onSubmit}>Save</button>
+            { items.length > 0 &&
+              <button className="save-list" type="button" onClick={this.onSubmit}>Save</button>
+            }
           </div>
         </div>
       </div>
