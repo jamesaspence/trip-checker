@@ -5,8 +5,24 @@
   align-items: center;
 
   .app-link {
+    flex: 2 2 15%;
     color: #fff;
     text-decoration: none;
+  }
+
+  .main-nav {
+    flex: 10 10 80%;
+    display: flex;
+
+    .nav-link {
+      margin: 0 10px;
+      text-decoration: none;
+      color: #fff;
+
+      &:hover {
+        opacity: 0.8;
+      }
+    }
   }
 
   .app-bar-header {
