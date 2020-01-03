@@ -1,6 +1,6 @@
 import React from 'react';
-import QuestionContainer from './question/QuestionContainer';
-import AnsweredQuestionContainer from './list/AnsweredQuestionContainer';
+import ItemContainer from './item/ItemContainer';
+import AnsweredItemContainer from './answered/AnsweredItemContainer';
 import { connect } from 'react-redux';
 import { Redirect } from 'react-router-dom';
 import { HOME } from '../../util/routes';
@@ -8,20 +8,20 @@ import { HOME } from '../../util/routes';
 import './PackContainer.scss';
 
 const mapStateToProps = state => ({
-  questions: state.packing.questions,
+  items: state.packing.items,
   currentIndex: state.packing.currentIndex,
-  answeredQuestions: state.packing.answeredQuestions
+  answeredItems: state.packing.answeredItems
 });
 
-const ConnectedPackContainer = ({ questions, answeredQuestions, currentIndex }) => {
-  if (questions.length < 1) {
+const ConnectedPackContainer = ({ items, answeredItems, currentIndex }) => {
+  if (items.length < 1) {
     return <Redirect to={HOME} />
   }
 
   return (
     <div className="pack-container full-container">
-      {questions.length > currentIndex ? (<QuestionContainer/>) : ''}
-      {answeredQuestions.length > 0 ? (<AnsweredQuestionContainer/>) : ''}
+      {items.length > currentIndex ? (<ItemContainer/>) : ''}
+      {answeredItems.length > 0 ? (<AnsweredItemContainer/>) : ''}
     </div>
   );
 };

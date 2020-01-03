@@ -1,19 +1,19 @@
-import { ANSWER_QUESTION, INCREMENT, TOGGLE_CHECKBOX, START_PACKING } from '../actions/packing';
+import { ANSWER_ITEM, INCREMENT, TOGGLE_CHECKBOX, START_PACKING } from '../actions/packing';
 
 const initialState = {
-  answeredQuestions: [],
-  questions: [],
+  answeredItems: [],
+  items: [],
   currentIndex: 0,
 };
 
 export default (state = initialState, action) => {
   const { type, ...rest } = action;
   switch (type) {
-    case ANSWER_QUESTION:
-      const { answeredQuestions } = state;
+    case ANSWER_ITEM:
+      const { answeredItems } = state;
       return {
         ...state,
-        answeredQuestions: [...answeredQuestions, rest]
+        answeredItems: [...answeredItems, rest]
       };
     case INCREMENT:
       const { currentIndex } = state;
@@ -22,22 +22,22 @@ export default (state = initialState, action) => {
         currentIndex: currentIndex + 1
       };
     case TOGGLE_CHECKBOX:
-      let modifiedQuestions = state.answeredQuestions
-        .map(question => {
-          if (question.text === rest.question) {
-            question.packed = rest.packed;
+      let modifiedItems = state.answeredItems
+        .map(item => {
+          if (item.text === rest.item) {
+            item.packed = rest.packed;
           }
 
-          return question;
+          return item;
         });
       return {
         ...state,
-        answeredQuestions: modifiedQuestions
+        answeredItems: modifiedItems
       };
     case START_PACKING:
       return {
         ...state,
-        questions: action.items
+        items: action.items
       };
 
     default:

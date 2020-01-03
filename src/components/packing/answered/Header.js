@@ -1,16 +1,16 @@
 import React from 'react';
 
 const renderHeader = text => (
-  <div className="answered-questions-header">
+  <div className="answered-item-header">
     <h2 className="header">
       {text}
     </h2>
   </div>
 );
 
-const Header = ({ answeredQuestions }) => {
-  const numberOfUnpackedItems = answeredQuestions
-    .filter(question => !question.packed)
+const Header = ({ answeredItems }) => {
+  const numberOfUnpackedItems = answeredItems
+    .filter(item => !item.packed)
     .length;
 
   let text = `👍 All good to go!! Safe travels.`;

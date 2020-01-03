@@ -5,8 +5,8 @@ import { Link } from 'react-router-dom';
 import { HOME, NEW_LIST, PACKING } from '../../util/routes';
 import packageInfo from '../../../package.json';
 
-const mapStateToProps = ({ packing: { questions } }) => ({
-  items: questions
+const mapStateToProps = ({ packing: { items } }) => ({
+  items
 });
 
 const AppBar = ({ items }) => (

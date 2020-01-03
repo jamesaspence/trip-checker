@@ -1,14 +1,14 @@
 import React from 'react';
 import Button from './Button';
 
-import './Question.scss';
+import './Item.scss';
 
-const Question = ({ question, onYes, onNo }) => (
-  <div className="question">
-    <div className="question-text">
+const Item = ({ item, onYes, onNo }) => (
+  <div className="item">
+    <div className="item-text">
       <h1>Did your pack your...</h1>
       <h2 className="packed-item">
-        {question}?
+        {item}?
       </h2>
     </div>
     <div className="buttons-container">
@@ -18,4 +18,4 @@ const Question = ({ question, onYes, onNo }) => (
   </div>
 );
 
-export default Question;
+export default Item;
