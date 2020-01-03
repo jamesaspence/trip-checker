@@ -13,6 +13,9 @@ const Header = ({ answeredItems }) => {
     .filter(item => !item.packed)
     .length;
 
+  console.log('header answered', answeredItems);
+  console.log('header unpacked', numberOfUnpackedItems);
+
   let text = `👍 All good to go!! Safe travels.`;
   if (numberOfUnpackedItems > 0) {
     text = `😞 Not quite there. Only ${numberOfUnpackedItems} item${numberOfUnpackedItems > 1 ? 's' : ''} to pack!`;

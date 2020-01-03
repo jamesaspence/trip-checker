@@ -2,11 +2,11 @@ import { Component } from 'react';
 import React from 'react';
 import Checkbox from './Checkbox';
 import './AnsweredItem.scss';
-import { toggleCheckbox } from '../../../actions/packing';
+import { answerItem } from '../../../actions/packing';
 import { connect } from 'react-redux';
 
 const mapDispatchToProps = dispatch => ({
-  toggleCheckbox: (item, packed) => dispatch(toggleCheckbox(item, packed))
+  answerItem: (index, packed) => dispatch(answerItem(index, packed))
 });
 
 class AnsweredItem extends Component {
@@ -17,8 +17,8 @@ class AnsweredItem extends Component {
   }
 
   toggleCheckbox() {
-    const { item } = this.props;
-    this.props.toggleCheckbox(item.text, !item.packed);
+    const { index, item } = this.props;
+    this.props.answerItem(index, !item.packed);
   }
 
   render() {
@@ -28,7 +28,7 @@ class AnsweredItem extends Component {
       <div className="answered-item">
         <Checkbox checked={item.packed} onChange={this.toggleCheckbox} index={index} />
         <div className="text-container" onClick={this.toggleCheckbox}>
-          <p className="text">{item.text}</p>
+          <p className="text">{item.name}</p>
         </div>
       </div>
     );

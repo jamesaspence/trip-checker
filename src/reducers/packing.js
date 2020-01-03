@@ -1,4 +1,4 @@
-import { ANSWER_ITEM, INCREMENT, TOGGLE_CHECKBOX, START_PACKING } from '../actions/packing';
+import { ANSWER_ITEM, INCREMENT, START_PACKING } from '../actions/packing';
 
 const initialState = {
   answeredItems: [],
@@ -7,13 +7,29 @@ const initialState = {
 };
 
 export default (state = initialState, action) => {
-  const { type, ...rest } = action;
+  const { type } = action;
   switch (type) {
     case ANSWER_ITEM:
-      const { answeredItems } = state;
+      const { index, packed } = action;
+      const { items } = state;
+
+      if (items.length < index + 1) {
+        return {
+          ...state
+        };
+      }
+
+      const modifiedItems = items.map((item, i) => {
+        if (i === index && item.packed !== packed) {
+          item.packed = packed;
+        }
+
+        return item
+      });
+
       return {
         ...state,
-        answeredItems: [...answeredItems, rest]
+        items: modifiedItems
       };
     case INCREMENT:
       const { currentIndex } = state;
@@ -21,23 +37,13 @@ export default (state = initialState, action) => {
         ...state,
         currentIndex: currentIndex + 1
       };
-    case TOGGLE_CHECKBOX:
-      let modifiedItems = state.answeredItems
-        .map(item => {
-          if (item.text === rest.item) {
-            item.packed = rest.packed;
-          }
-
-          return item;
-        });
-      return {
-        ...state,
-        answeredItems: modifiedItems
-      };
     case START_PACKING:
       return {
         ...state,
-        items: action.items
+        items: action.items.map(name => ({
+          name,
+          packed: false
+        }))
       };
 
     default:

@@ -8,7 +8,7 @@ const Item = ({ item, onYes, onNo }) => (
     <div className="item-text">
       <h1>Did your pack your...</h1>
       <h2 className="packed-item">
-        {item}?
+        {item.name}?
       </h2>
     </div>
     <div className="buttons-container">

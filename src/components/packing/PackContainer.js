@@ -9,11 +9,10 @@ import './PackContainer.scss';
 
 const mapStateToProps = state => ({
   items: state.packing.items,
-  currentIndex: state.packing.currentIndex,
-  answeredItems: state.packing.answeredItems
+  currentIndex: state.packing.currentIndex
 });
 
-const ConnectedPackContainer = ({ items, answeredItems, currentIndex }) => {
+const ConnectedPackContainer = ({ items, currentIndex }) => {
   if (items.length < 1) {
     return <Redirect to={HOME} />
   }
@@ -21,7 +20,7 @@ const ConnectedPackContainer = ({ items, answeredItems, currentIndex }) => {
   return (
     <div className="pack-container full-container">
       {items.length > currentIndex ? (<ItemContainer/>) : ''}
-      {answeredItems.length > 0 ? (<AnsweredItemContainer/>) : ''}
+      {currentIndex > 0 ? (<AnsweredItemContainer/>) : ''}
     </div>
   );
 };

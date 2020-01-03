@@ -11,7 +11,7 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-  answerItem: (item, packed) => dispatch(answerItem(item, packed)),
+  answerItem: (index, packed) => dispatch(answerItem(index, packed)),
   increment: () => dispatch(incrementItem())
 });
 
@@ -34,7 +34,7 @@ class ItemContainer extends Component {
   }
 
   onAnsweredItem(packed) {
-    this.props.answerItem(this.getCurrentItem(), packed);
+    this.props.answerItem(this.props.currentIndex, packed);
     this.props.increment();
   }
 
