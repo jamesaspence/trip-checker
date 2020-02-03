@@ -1,23 +1,16 @@
-export const ANSWER_QUESTION = 'ANSWER_QUESTION';
+export const ANSWER_ITEM = 'ANSWER_ITEM';
 export const INCREMENT = 'INCREMENT';
-export const TOGGLE_CHECKBOX = 'TOGGLE_CHECKBOX';
 export const START_PACKING = 'START_PACKING';
 
-export const answerPackedQuestion = (text, packed) => ({
-  type: ANSWER_QUESTION,
-  text,
+export const answerItem = (index, packed) => ({
+  type: ANSWER_ITEM,
+  index,
   packed
 });
 
-export const incrementQuestion = () => ({ type: INCREMENT });
+export const incrementItem = () => ({ type: INCREMENT });
 
 export const startPacking = items => ({
   type: START_PACKING,
   items
-});
-
-export const toggleCheckbox = (question, packed) => ({
-  type: TOGGLE_CHECKBOX,
-  question,
-  packed
 });

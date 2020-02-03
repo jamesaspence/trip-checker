@@ -1,10 +1,10 @@
-.answered-question-container {
+.answered-item-container {
   display: flex;
   flex-direction: column;
   overflow: scroll;
 }
 
-.question-list {
+.item-list {
   width: 100%;
   display: flex;
   flex-direction: column;
